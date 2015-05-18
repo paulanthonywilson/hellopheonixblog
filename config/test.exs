@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :hello_blog, HelloBlog.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  # username: "postgres",
+  # password: "postgres",
   database: "hello_blog_test",
   size: 1 # Use a single connection for transactional tests
