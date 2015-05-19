@@ -19,6 +19,10 @@ defmodule HelloBlog.Router do
     resources "/blogs", BlogController
   end
 
+  socket "/ws", HelloBlog do
+    channel "blogs:lobby", BlogChannel 
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HelloBlog do
   #   pipe_through :api
