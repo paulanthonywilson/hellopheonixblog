@@ -20,11 +20,12 @@ defmodule HelloBlog.BlogController do
     changeset = Blog.changeset(%Blog{}, blog_params)
 
     if changeset.valid? do
-      Repo.insert(changeset)
+      blog = Repo.insert(changeset)
 
       conn
       |> put_flash(:info, "Blog created successfully.")
       |> redirect(to: blog_path(conn, :index))
+      HelloBlog.Endpoint.broadcast "blogs:lobby", "new_blog", blog
     else
       render(conn, "new.html", changeset: changeset)
     end
